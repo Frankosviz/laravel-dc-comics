@@ -1,14 +1,257 @@
-@use './partials/variables' as *;
+@use  './partials/_variables.scss' as *;
 
 $fa-font-path: "../webfonts" !default;
 
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free/scss/regular";
-@import "~@fortawesome/fontawesome-free/scss/solid";
-@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap.scss";
 
-h1 {
-    color: $text-color;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+// Css di header
+
+body{
+    font-family: $basefont;
+}
+
+.containerFD {
+    height: 100px;
+}
+
+
+img {
+    width: 80px;
+    height: 80px;
+
+    &:hover {
+        filter: invert(1);
+        cursor: pointer;
+    }
+}
+
+.active {
+
+    &:hover {
+        color: $maincolor;
+    }
+}
+
+ul {
+    line-height: 100px;
+}
+
+li {
+    font-weight: bolder;
+    color: gray;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(41, 40, 40);
+
+    &:hover {
+        color: $maincolor;
+    }
+}
+
+// Css di Jumbotron
+
+.fd-hero-style {
+    height: 400px;
+    background-image: url('../img/jumbotron.jpg');
+    background-size: cover;
+}
+
+// Css di Homepage - Content
+
+.fd-button {
+    text-align: center;
+    font-weight: bold;
+    background-color: $maincolor;
+    width: 300px;
+    height: 40px;
+    color: white;
+    border: 2px solid $maincolor;
+
+    &:hover {
+        background-color: white;
+        color: $maincolor;
+        cursor: pointer;
+    }
+}
+
+
+.fd-current-series-btn {
+    text-align: center;
+    font-weight: bold;
+    background-color: $maincolor;
+    width: 200px;
+    height: 40px;
+    color: white;
+    border: 2px solid $maincolor;
+    font-size: 20px;
+    transform: translate(0, -50%);
+
+    &:hover {
+        background-color: white;
+        color: $maincolor;
+        cursor: pointer;
+    }
+}
+
+.imgComics {
+    width: 150px;
+    height: 150px;
+    &:hover {
+        filter:saturate(2.5);
+        cursor: pointer;
+    }
+}
+
+// Articles css
+.fd-style {
+    height: 150px;
+    background-color: $maincolor;
+    display: flex;
+    justify-content: center;
+}
+
+.containerArticles {
+    height: 150px;
+    background-color: $maincolor;
+}
+
+.imgArticles {
+    width: 40px;
+    height: 50px;
+    &:hover {
+        filter: invert(1);
+        cursor: pointer;
+    }
+}
+
+.pArticles {
+    color: white;
+    margin: 0 auto;
+    &:hover {
+        filter: invert(1);
+        cursor: pointer;
+    }
+}
+
+// About css
+
+.fd-followUs-style {
+    height: 450px;
+    background-image: url('../img/footer-bg.jpg');
+    background-size: cover;
+}
+
+.h2About {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:hover {
+        color: $maincolor;
+        cursor: pointer;
+    }
+}
+
+.imgAbout {
+    position: absolute;
+    right: 0;
+    top: -80px;
+
+    &:hover {
+        filter: invert(1);
+    }
+}
+
+.cropped {
+    width: 600px;
+    height: 450px;
+    overflow: hidden;
+}
+
+.ulAbout {
+    list-style-type: none;
+    line-height: 30px;
+    color: white;
+}
+
+.aAbout {
+    text-decoration: none;
+    color: $textcolor;
+    font-weight: normal;
+    font-size: 13px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Footer style
+
+.fd-footer-style {
+    height: 100px;
+    background-color: #303030;
+}
+
+.fd-style-footer {
+    padding-top: 10px
+}
+
+
+.containerFooter {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.fd-button-footer {
+    background-color: #303030;
+    color: white;
+    border: 2px solid $maincolor;
+    padding: 10px 10px;
+    margin: auto 0;
+
+    &:hover {
+        background-color: $maincolor;
+        color: white;
+    }
+}
+
+.liFooter {
+    background-color: $textcolor;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        background-color: white;
+        cursor: pointer;
+    }
+}
+
+.aFooter {
+    text-decoration: none;
+}
+
+.h2Footer {
+    color: $maincolor;
+    font-size: 20px;
+    margin: auto 0;
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
 }
