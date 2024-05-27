@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title', 100);
             $table->string('author',100);
             $table->string('description',250);
+            $table->string('condition', 50);
             $table->string('thumb', 250);
             $table->date('release_date');
             $table->boolean('rare');
