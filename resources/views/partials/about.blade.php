@@ -34,7 +34,7 @@
 
         </div>
         <div class="position-relative cropped">
-            <img src="{{ Vite::asset('resources/img/dc-logo-bg.png') }}" alt="DC-Background-image" class="imgAbout">
+            <img src="{{ Vite::asset('public/images/dc-logo-bg.png') }}" alt="DC-Background-image" class="imgAbout">
         </div>
     </div>
 </div>

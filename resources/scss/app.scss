@@ -58,6 +58,8 @@ a {
     }
 }
 
+
+
 // Css di Jumbotron
 
 .fd-hero-style {
@@ -253,5 +255,18 @@ a {
     &:hover {
         color: white;
         cursor: pointer;
+    }
+}
+
+.f-d-faw-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
+
+    a {
+        text-decoration: none;
+        color: #303030;
     }
 }

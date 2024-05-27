@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comic;
+use App\Models\Home;
 use Illuminate\Http\Request;
 
-class ComicController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comicsIndex = Comic::all();
-        return view("comics.index", compact("comicsIndex"));
+        $comicsHome = Comic::all();
+        return view('home', compact('comicsHome'));
     }
 
     /**
@@ -42,21 +43,21 @@ class ComicController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comic  $comic
-     * 
+     * @param  \App\Models\Home  $home
+     * @return \Illuminate\Http\Response
      */
-    public function show(Comic $comic)
+    public function show(Home $home)
     {
-        return view("comics.show", compact("comic"));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comic  $comic
+     * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comic $comic)
+    public function edit(Home $home)
     {
         //
     }
@@ -65,10 +66,10 @@ class ComicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comic  $comic
+     * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(Request $request, Home $home)
     {
         //
     }
@@ -76,10 +77,10 @@ class ComicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comic  $comic
+     * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comic $comic)
+    public function destroy(Home $home)
     {
         //
     }
