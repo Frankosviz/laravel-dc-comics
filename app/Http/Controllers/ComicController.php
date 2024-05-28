@@ -36,7 +36,18 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Prelevo i dati del form dalla request
+        $form_data = $request->all();
+        // Creo il nuovo Comic della classe Comic
+        $new_comic = new Comic();
+        // Vado a prendere dal form solo i valori che sono nel model scritti nel $fillable
+        $new_comic->fill($form_data);
+        // Salvo
+        $new_comic->save();
+
+        // $new_comic = Comic::create($form_data);
+
+        return redirect()->route("comics.index");
     }
 
     /**
@@ -77,10 +88,12 @@ class ComicController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Comic  $comic
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function destroy(Comic $comic)
-    {
-        //
-    }
+     {
+    //     $comic -> delete();
+    //     // Ritorna la index ma insieme ad un messaggio flash che scomparirà dopo un refresh
+    //     return redirect()->route("comics.index")->with("message", "Hai cancellato con successo il comic $comic->title");
+     }
 }
