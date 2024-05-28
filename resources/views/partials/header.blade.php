@@ -1,13 +1,13 @@
 <header>
     <div class="containerFD d-flex justify-content-around bg-white">
         <div class="d-flex align-items-center justify-content-center me-5">
-            <a class="ms-3" href="{{ route('home') }}"><img src="{{ Vite::asset('resources/img/dc-logo.png') }}"
+            <a class="ms-3" href="{{ route('comics.index') }}"><img src="{{ Vite::asset('resources/img/dc-logo.png') }}"
                     alt="Logo"></a>
         </div>
         <div>
             <ul class="d-flex align-items-center justify-content-center gap-5 list-unstyled  ">
                 <li class="active">
-                    <a class="nav-link {{ Route::currentRouteName() == 'comics' ? 'active' : ''}}"
+                    <a class="nav-link {{ Route::currentRouteName() == 'books' ? 'active' : ''}}"
                         href="{{route('books')}}">
                         Books
                     </a>

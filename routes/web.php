@@ -1,6 +1,6 @@
 <?php
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComicController;
+use Doctrine\DBAL\Schema\Index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get("/", function() {
-    $comicsHome = new HomeController();
-    return view("home", compact("comicsHome"));
-})->name("home");
 
 Route::resource('comics', ComicController::class);
 

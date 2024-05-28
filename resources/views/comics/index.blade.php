@@ -1,7 +1,7 @@
 <!-- Con extends andiamo ad estendere la pagina app.blade.php, modificando alcuni valori di essa -->
 @extends('layouts.app')
 <!-- Con section andiamo a modificare il 'title' in 'Home' -->
-@section('title', 'Home')
+@section('title', 'Comics')
 <!-- Con section andiamo a modificare il 'content' con una semplice stringa o con un template -->
 @section('content')
 <div class="bg-black">
