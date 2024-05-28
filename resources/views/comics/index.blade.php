@@ -6,12 +6,15 @@
 @section('content')
 <div class="bg-black">
     <div class="container bg-black">
-        <select class="fd-current-series-btn" id="condition" required>
-            <option selected disabled value="All">All</option>
+        <form action="{{ route('comics.index') }}" method="GET" id="search-form">
+        <select class="fd-current-series-btn" id="search" required name="search">
+            <option value="{{ route('comics.index') }}">All</option>
             <option value="good">good</option>
             <option value="normal">normal</option>
             <option value="bad">bad</option>
         </select>
+        </form>
+        
     </div>
     <div class="container d-flex flex-wrap gap-5 bg-blackFD">
         @foreach ($comics as $comic)

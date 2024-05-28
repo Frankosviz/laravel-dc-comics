@@ -6,8 +6,8 @@
 @section('content')
 <div class="bg-black">
     <div class="container bg-black">
-        <button class="fd-current-series-btn">
-            EDIT CARDS
+        <button class="fd-current-series-btn"><a class="text-white" href="{{ route('comics.index') }}">HOMEPAGE</a>
+
         </button>
         <div class="p-5 d-flex">
             <img class="f-d-detailImg" src="{{$comic->thumb}}" alt="{{$comic->title}}">

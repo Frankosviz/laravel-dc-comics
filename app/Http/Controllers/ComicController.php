@@ -11,9 +11,15 @@ class ComicController extends Controller
      *
      *
      */
-    public function index()
+    public function index(Request $request)
     {
-        $comics = Comic::all();
+        // metodo per far funzionare la searchbar
+        if (!empty($request->query("search"))) {
+            $condition = $request->query("search");
+            $comics = Comic::where("condition", $condition)->get();
+        } else {
+            $comics = Comic::all();    
+        }
         return view("comics.index", compact("comics"));
     }
 
@@ -44,18 +50,19 @@ class ComicController extends Controller
         // // Salvo
         // $new_comic->save();
         $form_data = $request->all();
-        // dd($form_data);
+        // // dd($form_data);
 
-        $new_comic = new Comic();
-        $new_comic->title = $form_data['title'];
-        $new_comic->author = $form_data['author'];
-        $new_comic->description = $form_data['description'];
-        $new_comic->condition = $form_data['condition'];
-        $new_comic->thumb = $form_data['thumb'];
-        $new_comic->release_date = $form_data['release_date'];
-        $new_comic->rare = $form_data['rare'];
-        $new_comic->save();
+        // $new_comic = new Comic();
+        // $new_comic->title = $form_data['title'];
+        // $new_comic->author = $form_data['author'];
+        // $new_comic->description = $form_data['description'];
+        // $new_comic->condition = $form_data['condition'];
+        // $new_comic->thumb = $form_data['thumb'];
+        // $new_comic->release_date = $form_data['release_date'];
+        // $new_comic->rare = $form_data['rare'];
+        // $new_comic->save();
 
+        $new_comic = Comic::create($form_data);
         return redirect()->route("comics.index");
 
         // $new_comic = Comic::create($form_data);
