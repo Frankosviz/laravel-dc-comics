@@ -350,7 +350,6 @@ a {
     padding: 15px;
     width: 500px;
     height: 300px;
-    overflow: auto;
     
 
     p {
@@ -360,7 +359,8 @@ a {
 
     h1 {
         color: red;
+        text-transform: uppercase;
+        font-size: 25px;
         font-weight: bold;
-        font-size: 30px;
     }
 }

@@ -6,19 +6,23 @@
 @section('content')
 <div class="bg-black">
     <div class="container bg-black">
-        <button class="fd-current-series-btn"><a href="{{ route('comics.index') }}">HOMEPAGE</a>
+        <button class="fd-current-series-btn"><a class="text-white" href="{{ route('comics.index') }}">HOMEPAGE</a>
 
         </button>
         <div class="p-5 d-flex">
             <img class="f-d-detailImg" src="{{$comic->thumb}}" alt="{{$comic->title}}">
             <div class="f-d-detailText">
                 <h1 class="f-d-detailTitle">{{$comic->title}}</h1>
-                <p class="f-d-detailSubtitle">{{$comic->author}}</p>
-                <p class="f-d-detailDescription">{{$comic->description}}</p>
-                <p class="f-d-detailPrice">{{$comic->condition}}</p>
-                <p class="f-d-detailSeries">{{$comic->release_date}}</p>
-                <p class="f-d-detailSaleDate">{{$comic->rare}}</p>
+                <p>{{$comic->author}}</p>
+                <p>{{$comic->condition}}</p>
+                <p>{{$comic->release_date}}</p>
+                <p>{{$comic->rare}}</p>
+                <p>{{$comic->description}}</p>
             </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <a class="fd-button-card" href="{{ route('comics.show', $comic->id) }}">EDIT</a>
+            <a class="fd-button-card-red" href="{{ route('comics.edit', $comic->id) }}">DELETE</a>
         </div>
         
     </div>
