@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center align-items-center">
-            <a class="fd-button-card" href="{{ route('comics.show', $comic->id) }}">EDIT</a>
+            <a class="fd-button-card" href="{{ route('comics.edit', $comic->id) }}">EDIT</a>
             <a class="fd-button-card-red" href="{{ route('comics.edit', $comic->id) }}">DELETE</a>
         </div>
         

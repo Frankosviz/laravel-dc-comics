@@ -6,6 +6,9 @@ import.meta.glob([
 ])
 
 const searchForm = document.getElementById('search-form');
-document.getElementById('search').addEventListener("change", () => {
-    searchForm.submit();
+const searchSelect = document.getElementById('search');
+searchSelect.addEventListener("change", () => {
+    if (searchSelect.value !== 'all') {
+        searchForm.submit();
+    }
 })

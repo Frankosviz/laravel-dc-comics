@@ -9,20 +9,73 @@
         <button class="fd-current-series-btn"><a class="text-white" href="{{ route('comics.index') }}">HOMEPAGE</a>
 
         </button>
-        <div class="p-5 d-flex">
+        <div class="p-5 d-flex gap-5 justify-content-between align-items-center">
             <img class="f-d-detailImg" src="{{$comic->thumb}}" alt="{{$comic->title}}">
-            <div class="f-d-detailText">
-                <h1 class="f-d-detailTitle">{{$comic->title}}</h1>
-                <p class="f-d-detailSubtitle">{{$comic->author}}</p>
-                <p class="f-d-detailDescription">{{$comic->description}}</p>
-                <p class="f-d-detailPrice">{{$comic->condition}}</p>
-                <p class="f-d-detailSeries">{{$comic->release_date}}</p>
-                <p class="f-d-detailSaleDate">{{$comic->rare}}</p>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-            <a class="fd-button-card" href="{{ route('comics.show', $comic->id) }}">EDIT</a>
-            <a class="fd-button-card-red" href="{{ route('comics.edit', $comic->id) }}">DELETE</a>
+            <form action="{{route('comics.update', $comic->id)}}" method="POST" class="row g-3 needs-validation"
+                novalidate>
+                @csrf
+                @method('PUT')
+                <div class="col-md-4">
+                    <label for="title" class="form-label text-white">Title</label>
+                    <input type="text" class="form-control" id="title" placeholder="Title" value="{{ $comic->title }}"
+                        required name="title">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label text-white">Author</label>
+                    <input type="text" class="form-control" id="validationCustom02" name="author"
+                        value="{{ $comic->author }}" placeholder="Author" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div>
+                    <label for="description" class="form-label text-white">Description</label><br>
+                    <textarea name="description" id="description" cols="30" rows="10">
+                            {{ $comic->description }}
+                        </textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="release_date" class="form-label text-white">Release Date</label>
+                    <input type="text" class="form-control" name="release_date" value="{{ $comic->release_date }}"
+                        id="release_date" required>
+                    <div class="invalid-feedback">
+                        Release Date
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="condition" class="form-label text-white">Condition</label>
+                    <select class="form-select" name="condition" value="{{ $comic->condition }}" id="condition"
+                        required>
+                        <option value="good" {{$comic->condition === 'good' ? 'selected' : ''}} > Good</option>
+                        <option value="normal" {{$comic->condition === 'normal' ? 'selected' : ''}}> Normal</option>
+                        <option value="bad" {{$comic->condition === 'bad' ? 'selected' : ''}}> Bad</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid state.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="thumb" class="form-label text-white">Thumb</label>
+                    <input type="text" class="form-control" name="thumb" id="thumb" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid zip.
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="rare" class="form-label text-white">Rare</label>
+                    <input type="text" class="form-control" name="rare" id="rare" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid zip.
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <button type="submit" class="fd-button-card">EDIT</button>
+                    <button type="reset" class="fd-button-card-red">DELETE</button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="fd-style">
