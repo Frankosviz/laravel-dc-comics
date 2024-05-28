@@ -6,23 +6,23 @@
 @section('content')
 <div class="bg-black">
     <div class="container bg-black">
-    <select class="fd-current-series-btn" id="condition" required>
-                            <option selected disabled value="All">All</option>
-                            <option value="good">good</option>
-                            <option value="normal">normal</option>
-                            <option value="bad">bad</option>
-                        </select>
+        <select class="fd-current-series-btn" id="condition" required>
+            <option selected disabled value="All">All</option>
+            <option value="good">good</option>
+            <option value="normal">normal</option>
+            <option value="bad">bad</option>
+        </select>
     </div>
     <div class="container d-flex flex-wrap gap-5 bg-blackFD">
         @foreach ($comics as $comic)
-        <div class="d-flex flex-column">
-            <div>
-                <img src="{{ $comic['thumb']}}" class="card-img-top imgComics" alt="imgComic">
-            </div>
-            <div class="f-d-card-body">
-                <a class="fd-button-card" href="{{ route('comics.show', $comic->id) }}">DETAILS</a>
-                <a class="fd-button-card" href="{{ route('comics.edit', $comic->id) }}">EDIT</a>
-            </div>
+            <div class="d-flex flex-column">
+                <div>
+                    <img src="{{ $comic['thumb']}}" class="card-img-top imgComics" alt="imgComic">
+                </div>
+                <div class="f-d-card-body">
+                    <a class="fd-button-card" href="{{ route('comics.show', $comic->id) }}">DETAILS</a>
+                    <a class="fd-button-card" href="{{ route('comics.edit', $comic->id) }}">EDIT</a>
+                </div>
             </div>
         @endforeach
     </div>
@@ -38,40 +38,43 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <form class="row g-3 needs-validation" novalidate>
+
+                <form action="{{route('comics.store')}}" method="POST" class="row g-3 needs-validation" novalidate>
+                    @csrf
                     <div class="col-md-4">
-                        <label for="validationCustom01" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="validationCustom01" value="Title" required>
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title" required name="title">
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div class="col-md-4">
                         <label for="validationCustom02" class="form-label">Author</label>
-                        <input type="text" class="form-control" id="validationCustom02" value="Author" required>
+                        <input type="text" class="form-control" id="validationCustom02" name="author" placeholder="Author" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div>
+                        <label for="description" class="form-label">Description</label><br>
                         <textarea name="description" id="description" cols="30" rows="10">
 
-    </textarea>
+                        </textarea>
                     </div>
                     <div class="col-md-6">
                         <label for="release_date" class="form-label">Release Date</label>
-                        <input type="text" class="form-control" id="release_date" required>
+                        <input type="text" class="form-control" name="release_date" id="release_date" required>
                         <div class="invalid-feedback">
                             Release Date
                         </div>
                     </div>
                     <div class="col-md-3">
                         <label for="condition" class="form-label">Condition</label>
-                        <select class="form-select" id="condition" required>
-                            <option selected disabled value="">All</option>
-                            <option value="good">good</option>
-                            <option value="normal">normal</option>
-                            <option value="bad">bad</option>
+                        <select class="form-select" name="condition" id="condition" required>
+                            <option selected disabled value="All">All</option>
+                            <option value="good">Good</option>
+                            <option value="normal">Normal</option>
+                            <option value="bad">Bad</option>
                         </select>
                         <div class="invalid-feedback">
                             Please select a valid state.
@@ -79,13 +82,21 @@
                     </div>
                     <div class="col-md-3">
                         <label for="thumb" class="form-label">Thumb</label>
-                        <input type="text" class="form-control" id="thumb" required>
+                        <input type="text" class="form-control" name="thumb" id="thumb" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid zip.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="rare" class="form-label">Rare</label>
+                        <input type="text" class="form-control" name="rare" id="rare" required>
                         <div class="invalid-feedback">
                             Please provide a valid zip.
                         </div>
                     </div>
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit">Submit form</button>
+                        <button class="btn btn-primary" type="submit">Create</button>
+                        <button class="btn btn-secondary" type="reset">Reset</button>
                     </div>
                 </form>
             </div>
