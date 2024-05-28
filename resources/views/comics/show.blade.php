@@ -22,7 +22,11 @@
         </div>
         <div class="d-flex justify-content-center align-items-center">
             <a class="fd-button-card" href="{{ route('comics.edit', $comic->id) }}">EDIT</a>
-            <a class="fd-button-card-red" href="{{ route('comics.edit', $comic->id) }}">DELETE</a>
+            <form action="{{ route('comics.destroy', $comic->id)}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" value="DELETE" class="fd-button-card-red">DELETE</button>
+        </form>
         </div>
         
     </div>

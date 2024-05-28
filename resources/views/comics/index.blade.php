@@ -5,6 +5,11 @@
 <!-- Con section andiamo a modificare il 'content' con una semplice stringa o con un template -->
 @section('content')
 <div class="bg-black">
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
     <div class="container bg-black">
         <form action="{{ route('comics.index') }}" method="GET" id="search-form">
         <select class="fd-current-series-btn" id="search" required name="search">

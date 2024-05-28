@@ -63,7 +63,7 @@ class ComicController extends Controller
         // $new_comic->save();
 
         $new_comic = Comic::create($form_data);
-        return redirect()->route("comics.index");
+        return redirect()->route("comics.index")->with("message", "Hai creato con successo il comic $new_comic->title");
 
         // $new_comic = Comic::create($form_data);
     }
@@ -99,7 +99,21 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        // Tutto questo si può commentare se abbiamo i fillable nel Model e utilizziamo nella public function update(Request $request, Comic $comic)
+        
+        // Se lo vogliamo utilizzare così rimettiamo id nella public function update(Request $request, $id)
+        // $comic = Comic::find($id);
+         
+        // $comic->title = $form_data['title'];
+        // $comic->author = $form_data['author'];
+        // $comic->description = $form_data['description'];
+        // $comic->condition = $form_data['condition'];
+        // $comic->thumb = $form_data['thumb'];
+        // $comic->release_date = $form_data['release_date'];
+        // $comic->rare = $form_data['rare'];
+        $form_data = $request->all();
+        $comic->update($form_data);
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
@@ -110,8 +124,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
      {
-    //     $comic -> delete();
+         $comic -> delete();
     //     // Ritorna la index ma insieme ad un messaggio flash che scomparirà dopo un refresh
-    //     return redirect()->route("comics.index")->with("message", "Hai cancellato con successo il comic $comic->title");
+         return redirect()->route("comics.index")->with("message", "Hai cancellato con successo il comic $comic->title");
      }
 }
