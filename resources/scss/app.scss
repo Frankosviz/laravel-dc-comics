@@ -293,16 +293,6 @@ a {
     max-width: 150px;
 }
 
-.fd-button-danger {
-    text-align: center;
-    font-weight: bold;
-    background-color: red;
-    width: 300px;
-    height: 40px;
-    color: white;
-    border: 2px solid red;
-}
-
 .fd-button-card {
     width: 100px;
     text-align: center;
@@ -322,4 +312,55 @@ a {
         cursor: pointer;
     }
     
+}
+
+.fd-button-card-red {
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+    background-color: $red;
+    height: 40px;
+    color: white;
+    border: 2px solid $red;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: white;
+        color: $maincolor;
+        cursor: pointer;
+    }
+    
+}
+
+.f-d-detailImg {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+
+    &:hover {
+        filter: invert(1);
+    }
+}
+
+.f-d-detailText {
+    padding: 15px;
+    width: 500px;
+    height: 300px;
+    overflow: auto;
+    
+
+    p {
+        color: white;
+        font-weight: bold;
+    }
+
+    h1 {
+        color: red;
+        font-weight: bold;
+        font-size: 30px;
+    }
 }

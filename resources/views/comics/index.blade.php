@@ -6,7 +6,12 @@
 @section('content')
 <div class="bg-black">
     <div class="container bg-black">
-        <button class="fd-current-series-btn">CURRENT SERIES</button>
+    <select class="fd-current-series-btn" id="condition" required>
+                            <option selected disabled value="All">All</option>
+                            <option value="good">good</option>
+                            <option value="normal">normal</option>
+                            <option value="bad">bad</option>
+                        </select>
     </div>
     <div class="container d-flex flex-wrap gap-5 bg-blackFD">
         @foreach ($comics as $comic)
