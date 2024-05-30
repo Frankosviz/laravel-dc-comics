@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdatePostRequest;
 
 class ComicController extends Controller
 {
@@ -107,8 +108,10 @@ class ComicController extends Controller
      * @param  \App\Models\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdatePostRequest $request, Comic $comic)
     {
+        // valido i dati nello store
+        $form_data = $request->validated();
         // Tutto questo si può commentare se abbiamo i fillable nel Model e utilizziamo nella public function update(Request $request, Comic $comic)
         
         // Se lo vogliamo utilizzare così rimettiamo id nella public function update(Request $request, $id)
@@ -121,7 +124,7 @@ class ComicController extends Controller
         // $comic->thumb = $form_data['thumb'];
         // $comic->release_date = $form_data['release_date'];
         // $comic->rare = $form_data['rare'];
-        $form_data = $request->all();
+        // $form_data = $request->all();
         $comic->update($form_data);
         return redirect()->route('comics.show', $comic->id);
     }
