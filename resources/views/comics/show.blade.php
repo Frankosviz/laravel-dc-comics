@@ -23,12 +23,12 @@
         <div class="d-flex justify-content-center align-items-center">
             <a class="fd-button-card" href="{{ route('comics.edit', $comic->id) }}">EDIT</a>
             <form action="{{ route('comics.destroy', $comic->id)}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" value="DELETE" class="fd-button-card-red">DELETE</button>
-        </form>
+                @csrf
+                @method('DELETE')
+                <input type="submit" id="deleteButton" value="DELETE" class="fd-button-card-red">
+            </form>
         </div>
-        
+
     </div>
     <div class="fd-style">
         <ul class="containerArticles d-flex align-items-center justify-content-between gap-5">
@@ -56,5 +56,23 @@
             </li>
         </ul>
     </div>
+    <!-- Scrivo la modale che mi permette di eliminare il fumetto, di default è hidden quindi non la vedo in pagina -->
+    <div class="modal fade" id="exampleModalShow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Sei sicuro di voler eliminare questo fumetto?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- Ricordarsi di inserire l'endsection per chiudere la sessione -->
     @endsection

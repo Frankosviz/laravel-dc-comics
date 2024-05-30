@@ -10,6 +10,15 @@
             {{ session()->get('message') }}
         </div>
     @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="container bg-black">
         <form action="{{ route('comics.index') }}" method="GET" id="search-form">
         <select class="fd-current-series-btn" id="search" required name="search">
@@ -51,56 +60,69 @@
                     @csrf
                     <div class="col-md-4">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="Title" required name="title">
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror"  id="title" value="{{ old('title') }}" placeholder="Title" required name="title">
+                        @error('title')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="validationCustom02" class="form-label">Author</label>
-                        <input type="text" class="form-control" id="validationCustom02" name="author" placeholder="Author" required>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
+                        <input type="text" class="form-control @error('author') is-invalid @enderror"  id="validationCustom02" value="{{ old('author') }}" name="author" placeholder="Author" required>
+                        @error('author')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div>
                         <label for="description" class="form-label">Description</label><br>
-                        <textarea name="description" id="description" cols="30" rows="10">
+                        <textarea name="description" id="description" cols="30" rows="10"
 
+                        {{ old('description') }}>
                         </textarea>
                     </div>
                     <div class="col-md-6">
                         <label for="release_date" class="form-label">Release Date</label>
-                        <input type="text" class="form-control" name="release_date" id="release_date" required>
-                        <div class="invalid-feedback">
-                            Release Date
-                        </div>
+                        <input type="text" class="form-control @error('release_date') is-invalid @enderror"  name="release_date" value="{{ old('release_date') }}" id="release_date" required>
+                        @error('release_date')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="condition" class="form-label">Condition</label>
-                        <select class="form-select" name="condition" id="condition" required>
+                        <select class="form-select @error('condition') is-invalid @enderror" name="condition" value="{{ old('condition') }}" id="condition">
                             <option selected disabled value="All">All</option>
                             <option value="good">Good</option>
                             <option value="normal">Normal</option>
                             <option value="bad">Bad</option>
                         </select>
-                        <div class="invalid-feedback">
-                            Please select a valid state.
-                        </div>
+                        @error('condition')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="thumb" class="form-label">Thumb</label>
-                        <input type="text" class="form-control" name="thumb" id="thumb" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid zip.
-                        </div>
+                        <input type="text" value="{{ old('thumb') }}" class="form-control @error('thumb') is-invalid @enderror" name="thumb" id="thumb" required>
+                        @error('thumb')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="rare" class="form-label">Rare</label>
-                        <input type="text" class="form-control" name="rare" id="rare" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid zip.
-                        </div>
+                        <input type="text" value="{{ old('rare') }}" class="form-control @error('rare') is-invalid @enderror" name="rare" id="rare">
+                        @error('rare')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">Create</button>

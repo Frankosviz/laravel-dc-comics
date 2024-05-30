@@ -11,6 +11,7 @@
         </button>
         <div class="p-5 d-flex gap-5 justify-content-between align-items-center">
             <img class="f-d-detailImg" src="{{$comic->thumb}}" alt="{{$comic->title}}">
+
             <form action="{{route('comics.update', $comic->id)}}" method="POST" class="row g-3 needs-validation"
                 novalidate>
                 @csrf
@@ -49,7 +50,7 @@
                     <label for="condition" class="form-label text-white">Condition</label>
                     <select class="form-select" name="condition" value="{{ $comic->condition }}" id="condition"
                         required>
-                        <option value="good" {{$comic->condition === 'good' ? 'selected' : ''}} > Good</option>
+                        <option value="good" {{$comic->condition === 'good' ? 'selected' : ''}}> Good</option>
                         <option value="normal" {{$comic->condition === 'normal' ? 'selected' : ''}}> Normal</option>
                         <option value="bad" {{$comic->condition === 'bad' ? 'selected' : ''}}> Bad</option>
                     </select>
@@ -73,7 +74,6 @@
                 </div>
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <button type="submit" class="fd-button-card">EDIT</button>
-                    <button type="reset" class="fd-button-card-red">DELETE</button>
                 </div>
             </form>
         </div>

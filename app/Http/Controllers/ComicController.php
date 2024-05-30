@@ -37,10 +37,20 @@ class ComicController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function store(Request $request)
     {
+        // valido i dati nello store
+        $request->validate([
+            'title' => 'required|max:100|min:3',
+            'description' => 'required|max:255|min:3|nullable',
+            'thumb' => 'required|max:255',
+            'author' => 'required|max:100|min:3',
+            'release_date' => 'required|date',
+            'condition' => 'required|in:good,normal,bad',
+            'rare' => 'required'
+        ]);
         // Prelevo i dati del form dalla request
         // $form_data = $request->all();
         // // Creo il nuovo Comic della classe Comic
